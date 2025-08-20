@@ -16,6 +16,7 @@ def main():
                 return                    #return nothing, quit program
         
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
 
