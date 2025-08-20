@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 from constants import * 
 
 def main():
@@ -10,8 +10,9 @@ def main():
 
     while True: #game loop
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: #closes program
-                return
+            if event.type == pygame.QUIT: #if quit event type
+                return                    #return nothing, quit program
+        
         screen.fill("black")
         pygame.display.flip()
 
