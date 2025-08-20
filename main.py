@@ -7,7 +7,7 @@ from asteroidfield import *
 def main():
     pygame.init()
 
-    #initialize containers
+    #create containers
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -29,14 +29,25 @@ def main():
             if event.type == pygame.QUIT: #if quit event type
                 return                    #return nothing, quit program
         
-        screen.fill("black")
+        screen.fill("black") #fill the screen black
+
+        #update all in updatables container
         for updatable in updatables:
             updatable.update(dt)
+
+        #check if each asteroid is colliding with player
+        for asteroid in asteroids:
+            if asteroid.is_colliding(player):
+                print("Game over!")
+                return
+
+        #draw all in drawables container
         for drawable in drawables:
             drawable.draw(screen)
-        pygame.display.flip()
+        
+        pygame.display.flip() #refresh display
 
-        #limit to  60 fps
+        #limit to  60 fps and assign delta time
         dt = clock.tick(60)/1000
 
 
